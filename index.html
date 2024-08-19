@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/big_data.png">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #DACBA9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #DACBA9;
+            color: #333;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #DACBA9 3px solid;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .dropdown {
+            float: right;
+            margin-bottom: 6px;
+            background-color: #b8a372;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .content {
+            background: #DACBA9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        ul, ol {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul li, ol li {
+            padding: 2px 0;
+            border-bottom: 1px solid #DACBA9;
+        }
+        .section-title {
+            font-weight: bold;
+        }
+        img {
+            max-width: 70%;
+            height: auto;
+            border: 1px solid #DACBA9;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            /* margin-top: 0; */
+            padding: 10px;
+            border-top: 1px solid #DACBA9;
+            background-color: #DACBA9;
+        }
+        footer p {
+            margin: 0;
+            color: #666;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="content" class="content">
+            <h1>Sistem Analisis Sentimen Real-Time</h1>
+            <h2>Deskripsi</h2>
+            <p>Sistem "Analisis Sentimen Destinasi Super Prioritas Berbasis Stream Processing Menggunakan Big Data Platform" 
+                ini menyediakan gambaran menyeluruh tentang sentimen pengguna Twitter secara real-time dengan menggunakan big data platforms
+                mengenai Destinasi Super Prioritas di Indonesia (seperti Danau Toba, Borobudur, Mandalika, Labuan Bajo, dan Likupang) pada tahun 2022.
+            </p>
+            <p>Platform big data yang digunakan yaitu Apache Kafka dan Apache Spark.
+                Tahapan proses yang dilakukan meliputi pengumpulan data dari Twitter, 
+                streaming menggunakan Kafka, analisis sentimen, dan proses analisis lainnya menggunakan Spark. 
+                Hasilnya berhasil dipresentasikan melalui dashboard menggunakan Dash by Plotly.
+            </p>
+            
+            <h2>Tujuan</h2>
+            <ul>
+                <li><strong>Memahami Sentimen Publik:</strong> Memberikan wawasan berharga tentang opini publik pengguna Twitter terhadap Destinasi Super Prioritas di Indonesia.</li>
+                <li><strong>Mendukung Pengambilan Keputusan:</strong> Membantu pemangku kepentingan membuat keputusan yang tepat untuk meningkatkan strategi pariwisata dan pengalaman pengunjung.</li>
+                <li><strong>Visualisasi Real-Time:</strong> Menawarkan visualisasi data real-time dan metrik sentimen mendalam untuk melacak tren terbaru dan memahami opini publik pengguna Twitter saat ini.</li>
+            </ul>
+
+            <h2>Desain Arsitektur Sistem</h2>
+            <img src="img/arsitektur.png"  alt="Result Arsitektur">
+            <p>
+                Desain arsitektur sistem melibatkan alur data dari Twitter yang diperoleh secara terus-menerus melalui crawling. 
+                Data tweet dikirim ke Apache Kafka dengan Topik A sebagai tempat penyimpanan awal. 
+                Kafka Broker menyimpan data tersebut, sementara Spark Structured Streaming memproses data dari Topik A untuk analisis sentimen 
+                menggunakan pendekatan Dictionary-Based. Hasil analisis dikirim ke Topik B, yang juga dikelola oleh Kafka Broker. 
+                Dash Plotly kemudian mengambil data dari Topik B untuk visualisasi hasil analisis sentimen secara real-time dalam bentuk grafik dan dashboard.
+            </p>
+
+            <h2>Video Demo Sistem</h2>
+            <video width="640" height="360" controls>
+                <source src="img/demo_sistem_compress.mp4" type="video/mp4">
+            </video>
+            
+            <h2>Fitur Utama Dashboard</h2>
+            <ol>
+                <li><strong>Data: </strong> Menampilkan data yang digunakan untuk analisis sentimen.</li>
+                <li><strong>Overview: </strong> Menyajikan kategori sentimen secara keseluruhan (positif, negatif, netral) serta frekuensi diskusi destinasi dan aspek topik 5A berdasarkan tweet pengguna Twitter.</li>
+                <li><strong>Relationship: </strong> Menunjukkan hubungan antara destinasi dan aspek topik 5A dengan kategori sentimen.</li>
+                <li><strong>Sentiment Analysis: </strong> Menyajikan distribusi kategori sentimen yang memungkinkan pengguna menyaring data berdasarkan waktu, destinasi, dan aspek topik 5A.</li>
+                <li><strong>Word Trends: </strong> Menampilkan frekuensi kata yang disebutkan dalam tweet tiap destinasi dan tiap sentimen untuk memberikan gambaran umum tentang topik yang paling banyak dibahas.</li>
+                <li><strong>Sentiment Trends: </strong> Menyajikan tampilan perubahan sentimen dari waktu ke waktu secara real-time.</li>
+                <li><strong>Destination Sentiments: </strong> Menyajikan tampilan perubahan sentimen tiap destinasi dari waktu ke waktu.</li>
+            </ol>
+            
+            <h2>Manfaat</h2>
+            <ul>
+                <li><strong>Pemangku Kepentingan Pariwisata: </strong> Sistem ini bermanfaat bagi pemangku kepentingan pariwisata dengan memberikan wawasan tentang opini publik khusunya pengguna Twitter dan meningkatkan strategi pemasaran serta layanan.</li>
+                <li><strong>Peneliti dan Analis: </strong> Menawarkan data dan wawasan berharga bagi peneliti dan analis untuk mempelajari tren dan pola sentimen di media sosial.</li>
+                <li><strong>Perencana Kebijakan: </strong> Membantu perencana kebijakan dalam membuat keputusan berbasis data untuk meningkatkan pengalaman pariwisata dan menarik lebih banyak pengunjung.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 Eva Nurkhofifah.</p>
+        </footer>
+</body>
+</html>
